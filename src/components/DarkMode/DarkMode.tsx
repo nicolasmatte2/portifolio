@@ -1,4 +1,4 @@
-import { Switch, Space } from "antd";
+import { Switch } from "antd";
 
 type DarkModeProps = {
   setDarkMode: (darkMode: string) => void;
