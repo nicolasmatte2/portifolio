@@ -1,4 +1,5 @@
 import { Switch } from "antd";
+import { DarkModeButton } from "../../styles/styles";
 
 type DarkModeProps = {
   setDarkMode: (darkMode: string) => void;
@@ -6,19 +7,23 @@ type DarkModeProps = {
 
 export const DarkMode = ({ setDarkMode }: DarkModeProps) => {
   return (
-    <Switch
-      checkedChildren="on"
-      unCheckedChildren="off"
-      onChange={(checked) => {
-        if (checked == true) {
-          setDarkMode("true");
-          localStorage.setItem("darkMode", "true");
-        } else if (checked == false) {
-          setDarkMode("false");
-          localStorage.setItem("darkMode", "false");
+    <DarkModeButton>
+      <Switch
+        checkedChildren="on"
+        unCheckedChildren="off"
+        onChange={(checked) => {
+          if (checked == true) {
+            setDarkMode("true");
+            localStorage.setItem("darkMode", "true");
+          } else if (checked == false) {
+            setDarkMode("false");
+            localStorage.setItem("darkMode", "false");
+          }
+        }}
+        defaultChecked={
+          localStorage.getItem("darkMode") == "true" ? true : false
         }
-      }}
-      defaultChecked={localStorage.getItem("darkMode") == "true" ? true : false}
-    />
+      />
+    </DarkModeButton>
   );
 };
